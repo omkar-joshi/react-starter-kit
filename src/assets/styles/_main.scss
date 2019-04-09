@@ -1,0 +1,8 @@
+// Define global styles/mixins in this file
+@import './variables';
+
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
