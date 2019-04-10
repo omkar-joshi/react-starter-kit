@@ -3,7 +3,7 @@ import { applyMiddleware, compose, createStore } from 'redux';
 import logger from 'redux-logger';
 
 import apiMiddleware from 'src/middleware/apiMiddleware';
-import rootReducer from './reducers';
+import rootReducer from './state';
 
 export const history = createBrowserHistory();
 

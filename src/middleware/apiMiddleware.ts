@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Dispatch, MiddlewareAPI } from 'redux';
 
-import { LOADING_COMPLETED, SET_LOADING } from 'src/reducers/common';
+import { LOADING_COMPLETED, SET_LOADING } from 'src/state/common/actions';
 import { getAuthToken } from 'src/utils/common';
 
 export const callApi = <Params, Body, Headers>(
