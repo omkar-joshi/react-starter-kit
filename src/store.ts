@@ -3,11 +3,12 @@ import { applyMiddleware, compose, createStore } from 'redux';
 import logger from 'redux-logger';
 
 import apiMiddleware from 'src/middleware/apiMiddleware';
+import mockApiMiddleware from 'src/middleware/mockApiMiddleware';
 import rootReducer from './state';
 
 export const history = createBrowserHistory();
 
-const middleware = [apiMiddleware];
+const middleware = [apiMiddleware, mockApiMiddleware];
 const { NODE_ENV } = process.env;
 
 if (NODE_ENV !== 'production') {
