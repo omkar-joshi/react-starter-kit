@@ -1,7 +1,7 @@
 import { LOADING_COMPLETED, SET_LOADING } from './actions';
 
 const initialState: PageLoadingStore = {
-  modelLoading: false,
+  demoLoading: false,
 };
 
 type CommonPayload = { page: string };

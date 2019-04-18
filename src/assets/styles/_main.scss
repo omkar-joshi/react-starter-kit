@@ -6,3 +6,19 @@ body, html, #root {
   padding: 0;
   height: 100vh;
 }
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-fluid {
+  flex: 1 0 auto;
+}
+
+@mixin align-center() {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+}

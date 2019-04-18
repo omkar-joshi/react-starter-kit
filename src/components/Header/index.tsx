@@ -15,12 +15,12 @@ const Header: React.SFC = () => {
       <Navbar.Text>React Starter Kit</Navbar.Text>
       <Navbar.Collapse className="justify-content-end">
         <Nav className="justify-content-end">
-          <Nav.Link>
-            <Link to="/">Home</Link>
-          </Nav.Link>
-          <Nav.Link>
-            <Link to="/demo">Demo</Link>
-          </Nav.Link>
+          <Link className="nav-link" to="/">
+            Home
+          </Link>
+          <Link className="nav-link" to="/demo">
+            Demo
+          </Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

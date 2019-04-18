@@ -31,7 +31,7 @@ export const callApi = <Params, Body, Headers>(
     params,
     headers: requestHeaders,
     data: body,
-    url: process.env.SERVER_URL + endpoint,
+    url: process.env.REACT_APP_SERVER_URL + endpoint,
   };
 
   return axios
@@ -42,16 +42,14 @@ export const callApi = <Params, Body, Headers>(
     });
 };
 
-export const CALL_API = Symbol('CALL_API');
+export const CALL_API = 'CALL_API';
 
 export default (store: MiddlewareAPI) => (next: Dispatch<ReduxAction>) => (action: APIAction & ReduxAction) => {
-  const callAPI = action.CALL_API;
-
-  if (typeof callAPI === 'undefined') {
+  if (action.type !== CALL_API) {
     return next(action);
   }
 
-  const { endpoint, method, params, body, headers, actions, authenticated, loadingPageType } = callAPI;
+  const { endpoint, method, params, body, headers, actions, authenticated, loadingPageType } = action;
 
   if (loadingPageType) {
     store.dispatch({ type: SET_LOADING, payload: { page: loadingPageType } });
