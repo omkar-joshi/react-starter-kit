@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import Loader from 'src/components/Loader';
 import { getDemoData, getMockData } from 'src/state/demo/actions';
+import AccordionList from './AccordionList';
 
 const Demo: React.FC = () => {
   const { loading, posts, mockPosts } = useSelector((state: ReduxStore) => ({
@@ -26,9 +27,9 @@ const Demo: React.FC = () => {
   return (
     <>
       <h4>API Data - </h4>
-      <div>{JSON.stringify(posts)}</div>
+      <AccordionList listData={posts} />
       <h4>Mock Data - </h4>
-      <div>{JSON.stringify(mockPosts)}</div>
+      <AccordionList listData={mockPosts} />
     </>
   );
 };
