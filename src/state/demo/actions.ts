@@ -12,6 +12,7 @@ export const getDemoData = (): APIAction => ({
   type: CALL_API,
   endpoint: '/posts',
   method: 'get',
+
   authenticated: false,
   actions: {
     success: GET_DEMO_DATA_SUCCESS,

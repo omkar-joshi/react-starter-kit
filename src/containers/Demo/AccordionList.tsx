@@ -1,5 +1,6 @@
 import React from 'react';
-import { Accordion, Button, Card } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
+import Accordion from 'react-bootstrap/Accordion';
 
 interface IAccordionProps {
   listData: DemoData[];
