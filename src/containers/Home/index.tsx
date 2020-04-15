@@ -1,7 +1,4 @@
 import React from 'react';
 
-export default class Home extends React.Component {
-  render() {
-    return <div>Home Container</div>;
-  }
-}
+const Home: React.FC = () => <div>Home Container</div>;
+export default Home;

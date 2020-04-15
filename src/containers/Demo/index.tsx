@@ -1,57 +1,37 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Loader from 'src/components/Loader';
 import { getDemoData, getMockData } from 'src/state/demo/actions';
+import AccordionList from './AccordionList';
 
-interface IDemoDispatchProps {
-  fetchDemoData: () => void;
-  fetchMockData: () => void;
-}
+const Demo: React.FC = () => {
+  const { loading, posts, mockPosts } = useSelector((state: ReduxStore) => ({
+    posts: state.demo.data,
+    loading: state.common.demoLoading,
+    mockPosts: state.demo.mockData,
+  }));
 
-interface IDemoStateProps {
-  posts: DemoData[];
-  loading: boolean;
-  mockPosts: DemoData[];
-}
+  const dispatch = useDispatch();
 
-type IDemoProps = IDemoDispatchProps & IDemoStateProps;
+  useEffect(() => {
+    dispatch(getDemoData());
+    dispatch(getMockData());
+    /* tslint:disable-next-line */
+  }, []);
 
-class Demo extends React.Component<IDemoProps> {
-  componentDidMount() {
-    this.props.fetchDemoData();
-    this.props.fetchMockData();
+  if (loading) {
+    return <Loader animation="border" />;
   }
 
-  render() {
-    const { loading, posts, mockPosts } = this.props;
-    if (loading) {
-      return <Loader animation="border" />;
-    }
+  return (
+    <>
+      <h4>API Data - </h4>
+      <AccordionList listData={posts} />
+      <h4>Mock Data - </h4>
+      <AccordionList listData={mockPosts} />
+    </>
+  );
+};
 
-    return (
-      <>
-        <h4>API Data - </h4>
-        <div>{JSON.stringify(posts)}</div>
-        <h4>Mock Data - </h4>
-        <div>{JSON.stringify(mockPosts)}</div>
-      </>
-    );
-  }
-}
-
-const mapStateToProps = (state: ReduxStore) => ({
-  posts: state.demo.data,
-  loading: state.common.demoLoading,
-  mockPosts: state.demo.mockData,
-});
-
-const mapDispatchToProps = (dispatch: Dispatch<ReduxAction>) => ({
-  fetchDemoData: () => dispatch(getDemoData()),
-  fetchMockData: () => dispatch(getMockData()),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Demo);
+export default Demo;
