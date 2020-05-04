@@ -6,8 +6,6 @@ const initialState: DemoStore = {
   error: null,
 };
 
-type DemoPayload = DemoData[] & Error;
-
 export default (state = initialState, action: ReduxAction<DemoPayload>): DemoStore => {
   const { type, payload, error } = action;
   if (!payload) {
@@ -23,7 +21,7 @@ export default (state = initialState, action: ReduxAction<DemoPayload>): DemoSto
       };
 
     case GET_DEMO_DATA_FAILURE:
-      return { ...state, data: [], error };
+      return { ...state, data: [], error: error || null };
 
     case GET_MOCK_DATA_SUCCESS:
       return {

@@ -1,9 +1,8 @@
 import { SET_LOADING } from 'src/state/common/actions';
-import { GET_DEMO_DATA_SUCCESS } from 'src/state/demo/actions';
 import { LOADING_COMPLETED } from '../actions';
 import reducers from '../reducer';
 
-describe('Test reducer', () => {
+describe('Test common reducer', () => {
   it('Test for when action is SET_LOADING', () => {
     const initialState: PageLoadingStore = {
       demoLoading: false,
