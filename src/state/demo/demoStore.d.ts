@@ -10,3 +10,5 @@ declare interface DemoStore {
   mockData: DemoData[];
   error?: Error | null;
 }
+
+declare type DemoPayload = DemoData[] & Error;
